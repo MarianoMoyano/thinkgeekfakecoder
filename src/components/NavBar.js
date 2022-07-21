@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 class NavBar extends Component {
     render() {
         const tiendaWebMM = this.props.tiendaWebMM;
@@ -25,10 +24,9 @@ class NavBar extends Component {
                      Productos
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#something">Peliculas</a></li>
-                        <li><a class="dropdown-item" href="#somethingElse">Libros</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#somethingElse2">Juegos</a></li>
+                        <li><a class="dropdown-item" href="#something">baking-only!</a></li>
+                        <li><a class="dropdown-item" href="#somethingElse">collecionables!</a></li>
+                        <li><a class="dropdown-item" href="#somethingElse2">evolucion</a></li>
                     </ul>
                     </li>
                 </ul>

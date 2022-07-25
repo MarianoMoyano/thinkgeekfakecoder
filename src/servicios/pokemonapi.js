@@ -6,8 +6,27 @@ export const getPokeCategoria = async () => {
     .then((data) => data);
 };
 
-export const getPokeCategoriaById = async (id) => {
+/* export const getPokeCategoriaById = async (id) => {
   return await fetch(`${API_URL}/${id}`)
     .then((response) => response.json())
     .then((data) => data);
+} */
+
+export const getPokeCategoriaById = async (id) => {
+  let cate = await fetch(`${API_URL}/${id}`)
+    .then((response) => response.json())
+  let poke = cate.items.map (async pokemon => {
+     return await fetch (pokemon.url) 
+      .then ((dataPoke) =>dataPoke.json())
+    })
+
+    return Promise.all (poke).then((data) => data); 
 }
+/*     .then((data) => data); */
+
+
+/* export const getPokeApi = async (URL) => {
+  return await fetch(`${URL}`)
+.then((response) => response.json())
+.then((data) => data);
+} */

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getPokeCategoriaById } from "../servicios/pokemonapi";
 import { useParams } from "react-router-dom";
 import { PokeDetalle } from "./Cartas";
+import "../components/Cartas/ItemDetail.css"
 
 const Categoria = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Categoria = () => {
   
 
     return (
-      <div> 
+      <div className="grid-Cartas grid-fondo"> 
           { dataCategoria.map((pokemon) => (
             <div>
                   <PokeDetalle
@@ -27,17 +28,6 @@ const Categoria = () => {
           }
       </div> 
       );
-
-/*     return (
-    <div> 
-        { dataCategoria.items.map((pokemon) => (
-          <div>
-            { <h1>{pokemon.name}</h1> }
-                <PokeDetalle id={pokemon.id} nombre={pokemon.name} url={pokemon.url} />
-                </div>))
-        }
-    </div> 
-    ); */
   };
 ;
 export default Categoria;

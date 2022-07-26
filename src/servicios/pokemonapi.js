@@ -6,12 +6,6 @@ export const getPokeCategoria = async () => {
     .then((data) => data);
 };
 
-/* export const getPokeCategoriaById = async (id) => {
-  return await fetch(`${API_URL}/${id}`)
-    .then((response) => response.json())
-    .then((data) => data);
-} */
-
 export const getPokeCategoriaById = async (id) => {
   let cate = await fetch(`${API_URL}/${id}`)
     .then((response) => response.json())
@@ -22,11 +16,3 @@ export const getPokeCategoriaById = async (id) => {
 
     return Promise.all (poke).then((data) => data); 
 }
-/*     .then((data) => data); */
-
-
-/* export const getPokeApi = async (URL) => {
-  return await fetch(`${URL}`)
-.then((response) => response.json())
-.then((data) => data);
-} */

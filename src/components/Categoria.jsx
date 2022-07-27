@@ -7,7 +7,7 @@ import "../components/Cartas/ItemDetail.css"
 const Categoria = () => {
   const { id } = useParams();
     const [dataCategoria, setDataCategoria] = useState([]);
-  
+    
     useEffect(() => {
       getPokeCategoriaById(id).then((data) => setDataCategoria(data));
       console.log (dataCategoria)

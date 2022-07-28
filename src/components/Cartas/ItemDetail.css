@@ -31,6 +31,17 @@ background: linear-gradient(180deg, rgba(34,60,195,0.8309874975380778) 0%, rgba(
   width: 70px;
   height: 70px;
 }
+
+.grandeNumero {
+font-size: larger;
+font-weight: 600;
+}
+
+.carrito{
+margin-left: 15px;
+margin-right: 15px;
+}
+
 /*   .img-animal {
     -o-object-fit: cover;
        object-fit: cover;

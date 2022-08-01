@@ -8,7 +8,7 @@ return (
     <img src={sprite} alt="" className="sizeSprite"/>
     <h2>Nombre: {nombre}</h2>
     <h3>Costo: {cost}</h3>
-    <Cantidad nombre={nombre} id={id}/>
+    <Cantidad nombre={nombre} id={id} precio={cost}/>
 </div>
 )} 
 

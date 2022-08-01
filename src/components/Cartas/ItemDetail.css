@@ -45,6 +45,11 @@ margin-right: 15px;
 .carritoImagen { 
  color: white;
 }
+
+.renglones { 
+  padding: 40px;
+  margin-top: 40px;
+ }
 /*   .img-animal {
     -o-object-fit: cover;
        object-fit: cover;

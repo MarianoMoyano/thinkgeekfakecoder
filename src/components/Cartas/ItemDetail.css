@@ -50,6 +50,11 @@ margin-right: 15px;
   padding: 40px;
   margin-top: 40px;
  }
+
+.descartarItem { 
+  background-color: black;
+ }
+
 /*   .img-animal {
     -o-object-fit: cover;
        object-fit: cover;

@@ -3,6 +3,7 @@ import { Cantidad } from "../Cantidad.jsx";
 import SumarAlCarro from "../SumarAlCarro";
 import { useState } from "react";
 
+
 export const PokeDetalle = ({ id, nombre, cost, sprite } ) => {
 
     const [dataCantidad, setDataCantidad] = useState(0)

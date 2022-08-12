@@ -3,13 +3,22 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { getPokeCategoria } from '../servicios/pokemonapi'; 
+/* import { getPokeCategoria } from '../servicios/pokemonapi'; 
+ */import {getDocs, collection, getFirestore} from "firebase/firestore";
 
 const NachBar =(props)=> {
-  const [dataCategoria, setDataCategoria] = useState({results:[]});
+  const [dataCategoria, setDataCategoria] = useState([]);
 
   useEffect(() => {
-    getPokeCategoria().then((data) => setDataCategoria(data));
+    const db = getFirestore();
+    const collRef = collection (db, "categorias")
+    getDocs(collRef).then((snapshot)=> {
+    const datos = snapshot.docs.map((doc)=>({id: doc.id, ...doc.data()}))
+    console.log(datos)
+    setDataCategoria (datos)
+  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+   /*  getPokeCategoria().then((data) => setDataCategoria(data)); */
   }, []);
 
   return (
@@ -22,10 +31,10 @@ const NachBar =(props)=> {
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Categorias" id="collasible-nav-dropdown">
-             { dataCategoria.results.map((CategoriaNombre) => {
+             { dataCategoria.map((CategoriaNombre) => {
                  return(
-                  <NavDropdown.Item href={CategoriaNombre.url.replace("https://pokeapi.co/api/v2/item-category/", "/categoria/")}>{CategoriaNombre.name}</NavDropdown.Item>
-                )})} 
+                  <NavDropdown.Item href= "`categoria/$({CategoriaNombre.id})`">{CategoriaNombre.nombre}</NavDropdown.Item>
+                )})}
             </NavDropdown>
           </Nav>
           <a href="/cart">

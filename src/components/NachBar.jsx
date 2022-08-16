@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-/* import { getPokeCategoria } from '../servicios/pokemonapi'; 
- */import {getDocs, collection, getFirestore} from "firebase/firestore";
+import { Link } from "react-router-dom";
+import {getDocs, collection, getFirestore} from "firebase/firestore";
 
 const NachBar =(props)=> {
   const [dataCategoria, setDataCategoria] = useState([]);
@@ -18,8 +18,7 @@ const NachBar =(props)=> {
     setDataCategoria (datos)
   });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-   /*  getPokeCategoria().then((data) => setDataCategoria(data)); */
-  }, []);
+}, []);
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -33,7 +32,7 @@ const NachBar =(props)=> {
             <NavDropdown title="Categorias" id="collasible-nav-dropdown">
              { dataCategoria.map((CategoriaNombre) => {
                  return(
-                  <NavDropdown.Item href= "`categoria/$({CategoriaNombre.id})`">{CategoriaNombre.nombre}</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to= {`categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</NavDropdown.Item>
                 )})}
             </NavDropdown>
           </Nav>

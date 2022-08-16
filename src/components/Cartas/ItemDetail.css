@@ -11,15 +11,15 @@ background: linear-gradient(180deg, rgba(34,60,195,0.8309874975380778) 0%, rgba(
     grid-gap: 1rem;
     justify-items: center;
     -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     -ms-grid-rows: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
 }
 
     
 .carta {
-  width: 350px;
-  height: 250px;
+  width: 400px;
+  height: 700px;
   margin-bottom: 1rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -28,8 +28,8 @@ background: linear-gradient(180deg, rgba(34,60,195,0.8309874975380778) 0%, rgba(
 }
 
 .sizeSprite {
-  width: 70px;
-  height: 70px;
+  width: 320px;
+  height: 490px;
 }
 
 .grandeNumero {

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
 import {getDocs, collection, getFirestore} from "firebase/firestore";
 
@@ -27,14 +26,10 @@ const NachBar =(props)=> {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Categorias" id="collasible-nav-dropdown">
-             { dataCategoria.map((CategoriaNombre) => {
+            { dataCategoria.map((CategoriaNombre) => {
                  return(
-                  <NavDropdown.Item as={Link} to= {`categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</NavDropdown.Item>
+                  <Nav.Link href= {`/categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</Nav.Link>
                 )})}
-            </NavDropdown>
           </Nav>
           <a href="/cart">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="carritoImagen" viewBox="0 0 16 16">

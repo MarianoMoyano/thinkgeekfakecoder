@@ -30,6 +30,7 @@ background: linear-gradient(180deg, rgba(34,60,195,0.8309874975380778) 0%, rgba(
 .sizeSprite {
   width: 320px;
   height: 490px;
+  object-fit: contain;
 }
 
 .grandeNumero {

@@ -18,6 +18,7 @@ const CartWidget = () => {
           <th>Nombre</th>
           <th>Cantidad</th>
           <th>Precio</th>
+          <th>subtotal</th>
           <th>Borrar</th>
         </tr>
       </thead>
@@ -25,8 +26,9 @@ const CartWidget = () => {
       { dataCarrito.map((item) => (
         <tr key= {item.id}>
           <td>{item.nombre}</td>
-          <td>{/* {item.Cantidad} */} <Cantidad id={item.id} nombre={item.nombre} precio={item.precio} setCantidad={setDataCantidad} /></td>
+          <td><Cantidad id={item.id} nombre={item.nombre} precio={item.precio} setCantidad={setDataCantidad} cantidadInicial={item.Cantidad} /></td>
           <td>{item.precio}</td>
+          <td>{item.precio*item.Cantidad}</td>
           <td>
           <button className="btn btn-link" role="link" onClick={()=> { 
             const nuevoCarrito = dataCarrito.filter(

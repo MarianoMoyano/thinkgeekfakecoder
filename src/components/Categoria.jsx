@@ -7,7 +7,8 @@ import "../components/Cartas/ItemDetail.css";
 const Categoria = () => {
   const { id } = useParams();
     const [dataCategoria, setDataCategoria] = useState([]);
-    
+    const [dataCarrito, setDataCarrito] = useState([])
+
     useEffect(() => {
       const db = getFirestore();
       const productos = collection (db, "productos");
@@ -22,6 +23,8 @@ const Categoria = () => {
         })) 
         console.log(datos)
         setDataCategoria(datos)
+
+        setDataCarrito ( JSON.parse (localStorage.getItem ("carrito") || "[]"))
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -35,7 +38,9 @@ const Categoria = () => {
                     id={brujo.id}
                     nombre={brujo.nombre} 
                     precio={brujo.precio} 
-                    imagen={brujo.imagen}/>
+                    imagen={brujo.imagen}
+                    cantidadInicial={dataCarrito.filter((item)=> {return item.id===brujo.id}).Cantidad}
+                    stock={brujo.stock}/>
                   </div>))
           }
       </div> 

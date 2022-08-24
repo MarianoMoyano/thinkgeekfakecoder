@@ -5,6 +5,5 @@ const Cargando = () => {
         </div>
     );
 };
-  
+
 export default Cargando;
-  

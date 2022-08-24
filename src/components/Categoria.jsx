@@ -29,10 +29,14 @@ const Categoria = () => {
 
       setDataCarrito ( JSON.parse (localStorage.getItem ("carrito") || "[]"))
     }) 
+    console.log((new Date()).getSeconds())
+    setTimeout (()=>{}, 6000);
+    console.log((new Date()).getSeconds())
     setCargando (false)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(dataCategoria)
   if (cargando) {
     return <Cargando/>;
   }
@@ -42,11 +46,12 @@ const Categoria = () => {
         { dataCategoria.map((brujo) => (
           <div>
                 <BrujoDetalle
+                  key={brujo.id}
                   id={brujo.id}
                   nombre={brujo.nombre} 
                   precio={brujo.precio} 
                   imagen={brujo.imagen}
-                  cantidadInicial={dataCarrito.filter((item)=> {return item.id===brujo.id}).Cantidad}
+                  cantidadInicial={dataCarrito.filter((item)=> {return item.id===brujo.id}).Cantidad || 0}
                   stock={brujo.stock}/>
                 </div>))
         }

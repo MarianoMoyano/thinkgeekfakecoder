@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom";
 import {getDocs, collection, getFirestore} from "firebase/firestore";
 
 const NachBar =(props)=> {
@@ -22,13 +21,13 @@ const NachBar =(props)=> {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">{props.tiendaWebMM}</Navbar.Brand>
+        <Navbar.Brand>{props.tiendaWebMM}</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             { dataCategoria.map((CategoriaNombre) => {
                  return(
-                  <Nav.Link href= {`/categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</Nav.Link>
+                  <Nav.Link key={CategoriaNombre.id} href= {`/categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</Nav.Link>
                 )})}
           </Nav>
           <a href="/cart">

@@ -1,14 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
-import Cantidad from "./Cantidad";
+import { CartContext } from "./CartContext";
+
 
 const CartWidget = () => {
-  const [dataCarrito, setDataCarrito] = useState (
+  const [precioTotal, setprecioTotal] = useState(0);
+  const { cartItems, setcartItems, registrarVenta } = useContext(CartContext);
+  /* const [dataCarrito, setDataCarrito] = useState (
     JSON.parse (localStorage.getItem ("carrito") || "[]")
-  );
+  ); */
 
-  const [dataCantidad, setDataCantidad] = useState(0)
+/*   const [dataCantidad, setDataCantidad] = useState(0)
+ */  const handleSubmit = (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById("nombre");
+    const mail = document.getElementById("mail");
+    const tel = document.getElementById("tel");
+    registrarVenta(precioTotal, { nombre: nombre, mail: mail, tel: tel });
+  };
+
+  useEffect(() => {
+    let total = 0;
+    cartItems.forEach(({ item, cantidad }) => {
+      total += parseInt(item.precio) * cantidad;
+    });
+    setprecioTotal(total);
+  }, [cartItems]);
 
   return (
   <div>
@@ -23,23 +41,24 @@ const CartWidget = () => {
         </tr>
       </thead>
       <tbody>
-      { dataCarrito.map((item) => (
+      { cartItems.map((item, cantidad) => (
         <tr key= {item.id}>
           <td>{item.nombre}</td>
-          <td><Cantidad id={item.id} nombre={item.nombre} precio={item.precio} setCantidad={setDataCantidad} cantidadInicial={item.Cantidad} /></td>
+          <td>{item}</td>
           <td>{item.precio}</td>
-          <td>{item.precio*item.Cantidad}</td>
+          <td>{item.precio*cantidad}</td>
           <td>
           <button className="btn btn-link" role="link" onClick={()=> { 
-            const nuevoCarrito = dataCarrito.filter(
+            const nuevoCarrito = cartItems.filter(
               function(itemBorrar) {
                 return (
                   itemBorrar.id !== item.id
                 )
               }
             )
-            localStorage.setItem ("carrito", JSON.stringify (nuevoCarrito))
-            setDataCarrito(nuevoCarrito) 
+            setcartItems (nuevoCarrito)
+/*             localStorage.setItem ("carrito", JSON.stringify (nuevoCarrito))
+            setDataCarrito(nuevoCarrito)  */
           }
           }> 
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
@@ -52,6 +71,15 @@ const CartWidget = () => {
         ))}
       </tbody>
     </Table>
+{/*     {dataCarrito.forEach((value, index, array) => {precioFinal += value.precio*value.Cantidad})}
+ */}    <h2>Precio a pagar: {precioTotal}</h2>
+    <h4>Ingrese sus datos por favor, sus datos a ingresar deben ser su mail, su telefono y por ultimo su nombre</h4>
+    <form onSubmit={handleSubmit}>
+    <input type = "text" id = "nombre"></input>
+    <input type = "mail" id = "mail"></input>
+    <input type = "tel" id = "tel"></input>
+    <button type="submit" className="btn btn-info">Completar compra</button>
+    </form>
   </div>
   )
 }

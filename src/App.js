@@ -6,6 +6,7 @@ import Inicio from "./components/Inicio";
 import Categoria from "./components/Categoria"
 import CartWidget from "./components/CartWidget";
 import CartProvider from "./components/CartContext";
+import MasDetalles from "./components/MasDetalle";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <NachBar tiendaWebMM = "Thinkgeekfake"/>
       <Routes>
       <Route path="/cart" element={<CartWidget />}  />
+      <Route path="/producto/:id" element={<MasDetalles />}  />
       <Route path="/" element={<Inicio />}  />
       <Route path="/categoria/:id" element={<Categoria />} />
       <Route

@@ -1,20 +1,24 @@
 import "../components/Cartas/ItemDetail.css"
 import Button from 'react-bootstrap/Button';
-import { CartContext, setCartItems } from "./CartContext";
+import { CartContext } from "./CartContext";
 import { useContext } from "react";
 
-
-export const SumarAlCarro = ({item}, Cantidad) => {
+export const SumarAlCarro = ({item}, cantidad) => {
+  const { setCartItems } = useContext(CartContext);
     return(
        <div key={item.id}>
-        <Button className="carrito" onClick={() => AgregarAlCarro ({item}, Cantidad)}>Sumar al carro</Button>
+        <Button className="carrito" onClick={() => {
+          setCartItems((prevState) => [...prevState, { item, cantidad: cantidad }]);
+        }}>Sumar al carro</Button>
+{/*         <Button className="carrito" onClick={() => agregarAlCarro ({item}, cantidad)}>Sumar al carro</Button>
+ */}
        </div> 
     )
 }
 
-function AgregarAlCarro ({item}, Cantidad){
-    const { setCartItems } = useContext(CartContext);
-    setCartItems((prevState) => [...prevState, { item, Cantidad: Cantidad }]);
+/* function agregarAlCarro ({item}, cantidad){ */
+    /* const { setCartItems } = useContext(CartContext);
+    setCartItems((prevState) => [...prevState, { item, cantidad: cantidad }]); */
     /* const carrito = JSON.parse (localStorage.getItem ("carrito") || "[]") */
  /*    if(
         carrito.find ((Item)=>{
@@ -34,7 +38,5 @@ function AgregarAlCarro ({item}, Cantidad){
 /*         const nuevoCarrito = [...modificarCarrito,  {nombre:nombre, Cantidad:Cantidad, id:id, precio:precio}]
  */        /* localStorage.setItem ("carrito", JSON.stringify (nuevoCarrito)) */
     
-  
-}
 
 export default SumarAlCarro

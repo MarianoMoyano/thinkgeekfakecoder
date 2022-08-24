@@ -70,3 +70,16 @@ margin-right: 15px;
   grid-gap: 1rem;
   justify-items: center;
 }
+
+.footer {
+  display: flex;
+  justify-items: center;
+}
+
+.productosNuevos {
+  display: grid;
+  -ms-grid-columns: 1fr 1fr  1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}

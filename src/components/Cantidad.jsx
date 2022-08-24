@@ -2,8 +2,8 @@ import { useState } from "react";
 import "../components/Cartas/ItemDetail.css"
 import Button from 'react-bootstrap/Button';
 
-export const Cantidad = ({id, stock, nombre, precio, setCantidad, cantidadInicial}) => {
-    const [dataCantidad, setDataCantidad] = useState(cantidadInicial || 0)
+export const Cantidad = ({id, stock, setCantidad}) => {
+    const [dataCantidad, setDataCantidad] = useState(0)
     return(
        <div key={id}>
         <Button onClick={()=> {

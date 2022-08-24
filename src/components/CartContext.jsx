@@ -5,7 +5,7 @@ import {addDoc, collection, getFirestore, writeBatch, query, where, getDocs, doc
 export const CartContext = createContext();
 
 const CartProvider = (props) => {
-    const [cartItems, setcartItems] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
 
     
   const registrarVenta = async (precioTotal, datosComprador) => {
@@ -49,7 +49,7 @@ const CartProvider = (props) => {
     }
   };
     return(
-        <CartContext.Provider value ={{cartItems, setcartItems, registrarVenta}}>
+        <CartContext.Provider value ={{cartItems, setCartItems, registrarVenta}}>
             {props.children}
         </CartContext.Provider>
     );

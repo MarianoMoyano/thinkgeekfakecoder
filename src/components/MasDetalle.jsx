@@ -24,9 +24,8 @@ const MasDetalles = () => {
     }
 
     return ( <MasDetallesCarta 
-        key={brujo.id}
+        key={brujo.id + 10000}
         producto = {brujo}
-        cantidadInicial = {0}
         /> );
 }
  

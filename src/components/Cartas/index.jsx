@@ -23,8 +23,8 @@ return (
     <h3>Stock: {stock}</h3>
     </>
     }  */}
-    {stock === 0 && <h3>Temporalmente Sin Stock!</h3>}
-    {precio === 0 && <h3>Proximamente !</h3>} 
+    {stock === 0 && <h3>Temporalmente sin stock!</h3>}
+    {precio === 0 && <h3>Proximamente a la venta!</h3>} 
 </div>
 )} 
 

@@ -56,6 +56,12 @@ margin-right: 15px;
   background-color: black;
  }
 
+.error404 {
+  display: block;
+  text-align: center;
+  margin-top: 100px;
+}
+
 /*   .img-animal {
     -o-object-fit: cover;
        object-fit: cover;

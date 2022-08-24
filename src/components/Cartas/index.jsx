@@ -16,7 +16,7 @@ return (
      {precio > 0 && 
     <>
     <h3>Precio: {precio}</h3>
-    <Cantidad nombre={nombre} id={id} precio={precio} setCantidad={setDataCantidad} cantidadInicial={cantidadInicial}/>
+    <Cantidad nombre={nombre} id={id} precio={precio} setCantidad={setDataCantidad} cantidadInicial={cantidadInicial} stock={stock}/>
     <SumarAlCarro id={id}  nombre={nombre} precio={precio} cantidad={dataCantidad}/>    
     <h3>Stock: {stock}</h3>
     </>

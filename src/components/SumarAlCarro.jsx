@@ -1,21 +1,22 @@
 import "../components/Cartas/ItemDetail.css"
 import Button from 'react-bootstrap/Button';
-import { CartContext } from "./CartContext";
+import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
 
-export const SumarAlCarro = ({item}, cantidad) => {
-  const { setCartItems } = useContext(CartContext);
+export const SumarAlCarro=({item, cantidad}) => {
+  const { setCartItems }=useContext(CartContext);
+  console.log('cant %d', cantidad)
     return(
        <div key={item.id}>
         <Button className="carrito" onClick={() => {
-          setCartItems((prevState) => [...prevState, { item, cantidad: cantidad }]);
+          console.log(cantidad)
+          setCartItems((prevState) => [...prevState, {...item, cantidad }]);
         }}>Sumar al carro</Button>
-{/*         <Button className="carrito" onClick={() => agregarAlCarro ({item}, cantidad)}>Sumar al carro</Button>
- */}
        </div> 
     )
 }
 
+export default SumarAlCarro;
 /* function agregarAlCarro ({item}, cantidad){ */
     /* const { setCartItems } = useContext(CartContext);
     setCartItems((prevState) => [...prevState, { item, cantidad: cantidad }]); */
@@ -39,4 +40,3 @@ export const SumarAlCarro = ({item}, cantidad) => {
  */        /* localStorage.setItem ("carrito", JSON.stringify (nuevoCarrito)) */
     
 
-export default SumarAlCarro

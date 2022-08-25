@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
 import {getDocs, collection, getFirestore} from "firebase/firestore";
+import NumeroCarrito from "./NumeroCarrito";
 
 const NachBar =(props)=> {
   const [dataCategoria, setDataCategoria] = useState([]);
 
   useEffect(() => {
-    const db = getFirestore();
-    const collRef = collection (db, "categorias")
+    const db=getFirestore();
+    const collRef=collection (db, "categorias")
     getDocs(collRef).then((snapshot)=> {
-      const datos = snapshot.docs.map((doc)=>({id: doc.id, ...doc.data()}))
+      const datos=snapshot.docs.map((doc)=>({id: doc.id, ...doc.data()}))
       console.log(datos)
       setDataCategoria (datos)
     });
@@ -27,14 +29,10 @@ const NachBar =(props)=> {
           <Nav className="me-auto">
             { dataCategoria.map((CategoriaNombre) => {
                  return(
-                  <Nav.Link key={CategoriaNombre.id} href= {`/categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</Nav.Link>
+                  <Nav.Link key={CategoriaNombre.id} as={Link} to={`/categoria/${CategoriaNombre.id}`}>{CategoriaNombre.nombre}</Nav.Link>
                 )})}
           </Nav>
-          <a href="/cart">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="carritoImagen" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-          </a>
+          <NumeroCarrito></NumeroCarrito>
         </Navbar.Collapse>
       </Container>
     </Navbar>

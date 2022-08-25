@@ -1,7 +1,5 @@
 import "./ItemDetail.css"
-/* import { Cantidad } from "../Cantidad.jsx";
-import SumarAlCarro from "../SumarAlCarro"; */
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 export const BrujoDetalle = ({ id, idCategoria, nombre, precio, imagen, cantidadInicial, stock } ) => {
@@ -9,11 +7,11 @@ export const BrujoDetalle = ({ id, idCategoria, nombre, precio, imagen, cantidad
 /* const [dataCantidad, setDataCantidad] = useState(0)
  */
 return (
-<div className='carta'>
+<div className='carta' key={id}>
     <img src={imagen} alt="" className="sizeSprite"/>
     <h2>{nombre}</h2>
 
-    <a href={`/producto/${id}`} className="btn btn-primary">Detalles</a>
+    <Link to={`/producto/${id}`} className="btn btn-primary">Detalles</Link>
 
 {/*     {precio > 0 && 
     <>
@@ -23,8 +21,8 @@ return (
     <h3>Stock: {stock}</h3>
     </>
     }  */}
-    {stock === 0 && <h3>Temporalmente sin stock!</h3>}
-    {precio === 0 && <h3>Proximamente a la venta!</h3>} 
+    {stock===0 && <h3>Temporalmente sin stock!</h3>}
+    {precio===0 && <h3>Proximamente a la venta!</h3>} 
 </div>
 )} 
 

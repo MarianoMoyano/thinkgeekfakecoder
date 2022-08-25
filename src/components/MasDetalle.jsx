@@ -17,6 +17,7 @@ const MasDetalles = () => {
           setBrujo({ ...snapshot.data(), id: snapshot.id });
           setCargando(false);
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (cargando) {

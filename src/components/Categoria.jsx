@@ -6,20 +6,20 @@ import "../components/Cartas/ItemDetail.css";
 import Cargando from "./Cargando";
 
 const Categoria = () => {
-  const { id } = useParams();
-  const [dataCategoria, setDataCategoria] = useState([]);
-  const [cargando, setCargando] = useState (true)
+  const { id }=useParams();
+  const [dataCategoria, setDataCategoria]=useState([]);
+  const [cargando, setCargando]=useState (true)
 
   useEffect(() => {
     setCargando (true)
-    const db = getFirestore();
-    const productos = collection (db, "productos");
-    const filteredCollection = query(
+    const db=getFirestore();
+    const productos=collection (db, "productos");
+    const filteredCollection=query(
       productos,
       where("idCategoria", "==", parseInt(id))
     );
     getDocs (filteredCollection).then (snapshot=> {
-      const datos= snapshot.docs.map (doc=> ({
+      const datos=snapshot.docs.map (doc=> ({
         id: doc.id,
         ...doc.data()
       })) 
@@ -37,15 +37,14 @@ const Categoria = () => {
   return (
     <div className="grid-Cartas grid-fondo"> 
         { dataCategoria.map((brujo) => (
-          <div>
+          <div key={brujo.id}>
                 <BrujoDetalle
-                  key={brujo.id}
                   id={brujo.id}
                   nombre={brujo.nombre} 
                   precio={brujo.precio} 
                   imagen={brujo.imagen}
                   stock={brujo.stock}/>
-                </div>))
+          </div>))
         }
     </div> 
     );

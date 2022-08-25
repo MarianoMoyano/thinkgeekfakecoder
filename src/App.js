@@ -5,7 +5,7 @@ import { Route, BrowserRouter as Router, Routes} from "react-router-dom";
 import Inicio from "./components/Inicio";
 import Categoria from "./components/Categoria"
 import CartWidget from "./components/CartWidget";
-import CartProvider from "./components/CartContext";
+import CartProvider from "./Context/CartContext";
 import MasDetalles from "./components/MasDetalle";
 
 function App() {
